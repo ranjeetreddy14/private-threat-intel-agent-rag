@@ -6,22 +6,22 @@
 ![Python](https://img.shields.io/badge/python-3.10+-blue.svg)
 ![Status](https://img.shields.io/badge/status-active-success.svg)
 
-## 🚀 Features
+## Features
 
-*   **🔒 Fully Private**: Runs entirely on your local machine using `llama-cpp-python`. No data leaves your network.
-*   **🧠 RAG Engine**: Automatically ingests and understands:
+*   **Fully Private**: Runs entirely on your local machine using `llama-cpp-python`. No data leaves your network.
+*   **RAG Engine**: Automatically ingests and understands:
     *   PDF Threat Reports
     *   CVE JSON Records
     *   STIX/TAXII Objects
     *   Text Notes
-*   **🤖 Smart Routing**: The agent intelligently decides the best source for your answer:
+*   **Smart Routing**: The agent intelligently decides the best source for your answer:
     1.  **Local Context**: Checks your private database first.
     2.  **Web Search**: Falls back to the web for the latest vulnerabilities (if enabled).
     3.  **General Knowledge**: Uses the LLM's base knowledge for general queries.
-*   **🌐 Web Search Integration**: Real-time internet access for up-to-the-minute threat data.
-*   **✨ Modern UI**: A beautiful, dark-mode, glassmorphism interface built with NiceGUI.
+*   **Web Search Integration**: Real-time internet access for up-to-the-minute threat data.
+*   **Modern UI**: A beautiful, dark-mode, glassmorphism interface built with NiceGUI.
 
-## 🛠️ System Design
+## System Design
 
 The system is built on a modular architecture designed for privacy and extensibility.
 
@@ -53,7 +53,7 @@ graph TD
 - **Web Search (`src/web_search.py`)**: Provides real-time search capabilities to supplement local data.
 - **LLM Client (`src/llm_client.py`)**: Interfaces with the local Llama model for inference.
 
-## 📦 Installation
+## Installation
 
 1.  **Clone the repository**
     ```bash
@@ -75,13 +75,13 @@ graph TD
     ```
     Access the UI at `http://localhost:8081`.
 
-## 🛡️ Usage
+## Usage
 
 1.  **Upload Data**: Use the sidebar to upload PDF reports or CVE JSON files.
 2.  **Ingest**: Click "Ingest Documents" to process them into the vector database.
 3.  **Chat**: Ask questions like "What are the latest indicators for APT29?" or "Summarize CVE-2024-1234".
 4.  **Web Search**: Toggle "Enable Web Search" if you need information outside your local dataset.
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License.
