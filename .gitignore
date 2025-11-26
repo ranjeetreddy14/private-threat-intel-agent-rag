@@ -1,0 +1,19 @@
+# Large Models
+*.gguf
+*.bin
+
+# Vector Database (Local Storage)
+db/
+chroma.sqlite3
+
+# User Data (Documents)
+data/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Environment / IDE
+.env
+.vscode/
+.idea/
