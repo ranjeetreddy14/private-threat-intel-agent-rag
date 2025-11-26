@@ -27,7 +27,7 @@ The system is built on a modular architecture designed for privacy and extensibi
 
 ```mermaid
 flowchart TD
-  User[User] -->|"Query"| UI[NiceGUI Interface]
+  User[User] -->|"Query"| UI[UI Interface]
   UI -->|"Process"| Agent[Agent Core]
 
   subgraph "Decision Engine"
