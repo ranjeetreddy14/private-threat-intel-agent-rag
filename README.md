@@ -38,7 +38,7 @@ flowchart TD
     
     subgraph "Data Layer"
         RAG <-->|"Retrieve"| Chroma[ChromaDB Vector Store]
-        RAG <--|"Ingest"| Files[PDFs / JSONs / STIX]
+        RAG <--|"Ingest"| Files["PDFs<br>JSONs<br>STIX Files"]
     end
     
     Web <-->|"Fetch"| Internet((Internet))
