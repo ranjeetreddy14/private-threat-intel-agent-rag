@@ -19,7 +19,7 @@
     2.  **Web Search**: Falls back to the web for the latest vulnerabilities (if enabled).
     3.  **General Knowledge**: Uses the LLM's base knowledge for general queries.
 *   **Web Search Integration**: Real-time internet access for up-to-the-minute threat data.
-*   **Modern UI**: A beautiful, dark-mode, glassmorphism interface built with NiceGUI.
+*   **Modern UI**: A beautiful, dark-mode, glassmorphism interface built with FastAPI using html/css/javascript.
 
 ## System Design
 
@@ -27,24 +27,24 @@ The system is built on a modular architecture designed for privacy and extensibi
 
 ```mermaid
 flowchart TD
-    User[User] -->|"Query"| UI[NiceGUI Interface]
-    UI -->|"Process"| Agent[Agent Core]
+    User[User] -->|Query| UI[FastAPI UI Interface]
+    UI -->|Process| Agent[Agent Core]
     
-    subgraph "Decision Engine"
-        Agent -->|"1. Search"| RAG[RAG Engine]
-        Agent -->|"2. Fallback"| Web[Web Search]
-        Agent -->|"3. Generate"| LLM[Local LLM]
+    subgraph Decision_Engine
+        Agent -->|Search| RAG[RAG Engine]
+        Agent -->|Fallback| Web[Web Search]
+        Agent -->|Generate| LLM[Local LLM]
     end
     
-    subgraph "Data Layer"
-        RAG <-->|"Retrieve"| Chroma[ChromaDB Vector Store]
-        RAG <--|"Ingest"| Files["PDFs<br>JSONs<br>STIX Files"]
+    subgraph Data_Layer
+        RAG -->|Retrieve| Chroma[ChromaDB Vector Store]
+        RAG -->|Ingest| Files[PDFs JSONs STIX]
     end
     
-    Web <-->|"Fetch"| Internet((Internet))
+    Web -->|Fetch| Internet((Internet))
     
-    LLM -->|"Response"| Agent
-    Agent -->|"Answer"| UI
+    LLM -->|Response| Agent
+    Agent -->|Answer| UI
 ```
 
 ### Components
