@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🛡️ Saturday's Threat Database</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
         <div class="header-content">
             <h1 class="gradient-text">🛡️ Saturday's Threat Database</h1>
-            <p class="subtitle">Your Private, Secure, AI Research Assistant</p>
+            <p class="subtitle">Your Private, Secure, AI Threat Research Assistant</p>
         </div>
     </header>
 
@@ -32,7 +34,7 @@
 
             <section class="sidebar-section">
                 <h2>📂 Ingestion</h2>
-                
+
                 <div class="upload-area" id="uploadArea">
                     <input type="file" id="fileInput" multiple accept=".txt,.md,.pdf,.json" hidden>
                     <label for="fileInput" class="upload-label">
@@ -76,20 +78,16 @@
                     <div class="message-avatar">🤖</div>
                     <div class="message-content">
                         <div class="message-author">Saturday</div>
-                        <div class="message-text">Hello! I'm Saturday. How can I help you with your threat research today?</div>
+                        <div class="message-text">Hello! I'm Saturday. How can I help you with your threat research
+                            today?</div>
                     </div>
                 </div>
             </div>
 
             <div class="chat-input-container">
                 <div class="chat-input-wrapper">
-                    <input 
-                        type="text" 
-                        id="chatInput" 
-                        class="chat-input" 
-                        placeholder="Ask a question..."
-                        autocomplete="off"
-                    >
+                    <input type="text" id="chatInput" class="chat-input" placeholder="Ask a question..."
+                        autocomplete="off">
                     <button id="sendBtn" class="btn-send">
                         <span>➤</span>
                     </button>
@@ -105,4 +103,5 @@
 
     <script src="/static/app.js"></script>
 </body>
+
 </html>

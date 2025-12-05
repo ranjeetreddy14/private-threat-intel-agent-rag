@@ -39,18 +39,26 @@ class Agent:
         rag_results = self.rag.query_db(query)
         
         if rag_results and rag_results['documents'] and rag_results['documents'][0]:
+            # Debug logging - prints to console/terminal
+            print(f"[DEBUG] RAG query returned {len(rag_results['documents'][0])} results")
+            if 'distances' in rag_results and rag_results['distances'][0]:
+                distances = rag_results['distances'][0]
+                print(f"[DEBUG] Distance range: {min(distances):.3f} - {max(distances):.3f}")
+            
             for i, doc in enumerate(rag_results['documents'][0]):
                 distance = rag_results['distances'][0][i] if 'distances' in rag_results else 0
                 
-                # Strict Filtering
+                # Adjusted thresholds for ChromaDB's cosine distance (0-2 scale)
+                # Cosine distance: 0=identical, 1=orthogonal, 2=opposite
                 relevance = "LOW"
-                if distance < 0.30: relevance = "HIGH"
-                elif distance < 0.60: relevance = "MEDIUM"
+                if distance < 1.0: relevance = "HIGH"      # Strong semantic match
+                elif distance < 1.3: relevance = "MEDIUM"  # Moderate match
                 
                 if relevance in ["HIGH", "MEDIUM"]:
                     meta = rag_results['metadatas'][0][i]
                     source = meta.get('source', 'Unknown')
                     local_context.append(f"[Source: {source} | Relevance: {relevance}]\n{doc}")
+                    print(f"[DEBUG] Including result {i+1}: distance={distance:.3f}, relevance={relevance}, source={source}")
 
         # 4. Routing Decision
         web_context = []

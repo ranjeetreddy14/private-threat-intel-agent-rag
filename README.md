@@ -27,24 +27,24 @@ The system is built on a modular architecture designed for privacy and extensibi
 
 ```mermaid
 flowchart TD
-  User[User] -->|"Query"| UI[UI Interface]
-  UI -->|"Process"| Agent[Agent Core]
-
-  subgraph "Decision Engine"
-    Agent -->|"1. Search"| RAG[RAG Engine]
-    Agent -->|"2. Fallback"| Web[Web Search]
-    Agent -->|"3. Generate"| LLM[Local LLM]
-  end
-
-  subgraph "Data Layer"
-    RAG <-->|Retrieve| Chroma[ChromaDB Vector Store]
-    RAG <-->|Ingest| Files[PDFs · JSONs · STIX Files]
-  end
-
-  Web <-->|Fetch| Internet[(Internet)]
-
-  LLM -->|"Response"| Agent
-  Agent -->|"Answer"| UI
+    User[User] -->|"Query"| UI[NiceGUI Interface]
+    UI -->|"Process"| Agent[Agent Core]
+    
+    subgraph "Decision Engine"
+        Agent -->|"1. Search"| RAG[RAG Engine]
+        Agent -->|"2. Fallback"| Web[Web Search]
+        Agent -->|"3. Generate"| LLM[Local LLM]
+    end
+    
+    subgraph "Data Layer"
+        RAG <-->|"Retrieve"| Chroma[ChromaDB Vector Store]
+        RAG <--|"Ingest"| Files[PDFs / JSONs / STIX]
+    end
+    
+    Web <-->|"Fetch"| Internet((Internet))
+    
+    LLM -->|"Response"| Agent
+    Agent -->|"Answer"| UI
 ```
 
 ### Components
